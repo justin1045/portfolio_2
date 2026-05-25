@@ -1,17 +1,17 @@
-import ReviewOnScroll from "../ReviewOnScroll";
+import RevealOnScroll from "../RevealOnScroll";
 
 
 function About() {
   const frontendSkills = ["HTML", "TailwindCSS", "JavaScript", "React"];
 
-  const backendSkills = ["NodeJs", "AWS", "MongoDB", "Sql"];
+  const backendSkills = ["Node.js", "AWS", "MongoDB", "SQL"];
 
   return (
     <section
       id="about"
       className="min-h-screen flex items-center justify-center py-20"
     >
-      <ReviewOnScroll>
+      <RevealOnScroll>
       <div className="max-w-3xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8  text-center bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
           About Me
@@ -65,53 +65,47 @@ function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all ">
             <h3 className="text-xl font-bold mb-4">🎓 Education</h3>
-            <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <ul className="space-y-6 text-gray-300">
               <li>
-                <strong>
-                  Bachelor of Pharmacy Apollo College, Ahmedabad | 2018 – 2022{" "}
-                  <br />
-                  <br />
-                  Built a strong foundation in analytical thinking and
-                  problem-solving through pharmaceutical studies.
-                </strong>
-              </li>
-
-              <li>
-                <strong>
-                  <br />
-                  Full-Stack Web Development (MERN Stack) Geekster | 2024 – 2025
-                  <br />
+                <div className="font-semibold text-white">Full-Stack Web Development (MERN Stack)</div>
+                <div className="text-sm text-gray-400 mb-1">Geekster | 2024 – 2025</div>
+                <p className="text-sm">
                   Completed hands-on training in modern web technologies with a
                   focus on building full-stack applications using HTML,
-                  TailwindCSS, JavaScript, React, and Node.js.
-                </strong>
+                  Tailwind CSS, JavaScript, React, and Node.js.
+                </p>
               </li>
-
               <li>
-                Relevent Coursework: Data Structures, Web Development, Cloud
-                Computing...
+                <div className="font-semibold text-white">Bachelor of Pharmacy</div>
+                <div className="text-sm text-gray-400 mb-1">Apollo College, Ahmedabad | 2018 – 2022</div>
+                <p className="text-sm">
+                  Built a strong foundation in analytical thinking and
+                  problem-solving through pharmaceutical studies.
+                </p>
+              </li>
+              <li className="pt-2 border-t border-white/10">
+                <span className="text-sm"><strong className="text-white">Relevant Coursework:</strong> Data Structures, Web Development, Cloud Computing...</span>
               </li>
             </ul>
           </div>
 
           <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all ">
-            <h3 className="text-xl font-bold mb-4">Work Experience</h3>
-            <div className="space-y-4 text-gray-300">
+            <h3 className="text-xl font-bold mb-4">💼 Work Experience</h3>
+            <div className="space-y-6 text-gray-300">
               <div>
-                <h4 className="font-semibold">
-                  Full-Stack Web Development Trainee Geekster | 2024 – 2025
+                <h4 className="font-semibold text-white">
+                  Full-Stack Web Development Trainee
                 </h4>
-                <p>
-                  <br />
+                <div className="text-sm text-gray-400 mb-2">Geekster | 2024 – 2025</div>
+                <p className="text-sm">
                   Built and deployed real-world web applications using the MERN stack. Gained hands-on experience with frontend and backend development, API integration, and responsive UI design. Collaborated on projects following industry best practices.
-
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </ReviewOnScroll>
+      </RevealOnScroll>
     </section>
   );
 }
