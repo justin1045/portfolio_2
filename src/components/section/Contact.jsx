@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import ReviewOnScroll from "../ReviewOnScroll";
+import RevealOnScroll from "../RevealOnScroll";
 import emailjs from '@emailjs/browser';
 
 function Contact() {
@@ -29,8 +29,8 @@ function Contact() {
 
   return (
     <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-      <ReviewOnScroll>
-        <div className="px-4 w-150">
+      <RevealOnScroll>
+        <div className="px-4 w-full max-w-xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Get In Touch</h2>
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <input
@@ -68,7 +68,7 @@ function Contact() {
             </button>
           </form>
         </div>
-      </ReviewOnScroll>
+      </RevealOnScroll>
     </section>
   );
 }

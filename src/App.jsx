@@ -7,15 +7,16 @@ import Home from "./components/section/Home"
 import About from "./components/section/About"
 import Projects from "./components/section/Projects"
 import Contact from "./components/section/Contact"
+import Footer from "./components/Footer"
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [menuOpen, setMenuOpen] = useState()
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <>
-    {!isLoading && <Loading onComplete={()=>setIsLoading(true)}/>}
-      <div className={`min-h-screen transition-opacity duration-700 ${isLoading ? "opacity-100" : "opacity-0"} bg-black text-gray-200`}>
+      <Loading onComplete={() => setIsLoaded(true)} />
+      <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} bg-black text-gray-200`}>
 
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
@@ -23,6 +24,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
 
       </div>
     </>
