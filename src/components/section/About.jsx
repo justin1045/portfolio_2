@@ -1,111 +1,123 @@
+import AnimatedText from "../AnimatedText";
 import RevealOnScroll from "../RevealOnScroll";
 
-
 function About() {
-  const frontendSkills = ["HTML", "TailwindCSS", "JavaScript", "React"];
+  const processSteps = [
+    {
+      number: "01",
+      title: "Discovery",
+      description: "Understanding your business goals, audience, and technical requirements through in-depth consultation.",
+    },
+    {
+      number: "02",
+      title: "Strategy & Design",
+      description: "Creating wireframes, prototypes, and a clear project roadmap before writing a single line of code.",
+    },
+    {
+      number: "03",
+      title: "Development",
+      description: "Building with modern, scalable tech stacks — clean code, optimized for performance and SEO from day one.",
+    },
+    {
+      number: "04",
+      title: "Launch & Scale",
+      description: "Thorough testing, deployment, and ongoing support to scale your application as your business grows.",
+    },
+  ];
 
-  const backendSkills = ["Node.js", "AWS", "MongoDB", "SQL"];
+  const technologies = [
+    "JavaScript", "TypeScript", "React", "Next.js",
+    "Node.js", "Express", "MongoDB", "PostgreSQL",
+    "Tailwind CSS", "GSAP", "AWS", "Vercel",
+    "Firebase", "REST APIs", "Git", "Figma",
+  ];
+
+  const marqueeItems = [...technologies, ...technologies];
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex items-center justify-center py-20"
-    >
-      <RevealOnScroll>
-      <div className="max-w-3xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8  text-center bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-          About Me
-        </h2>
+    <section id="approach" className="py-16 md:py-32 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
+        {/* Section label */}
+        <div className="section-label">
+          <span className="label-number">03</span>
+          <span className="label-line" />
+          <span>Process</span>
+        </div>
 
-        <div className="rounded-xl p-8 border-white/10 hover:-translate-y-1 transition-all">
-          <p className="text-gray-300 mb-6">
-            Passionate developer with expertise in building scalable web
-            applications and creating innovative solutions.
-          </p>
+        {/* Two-column header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-10 md:mb-16">
+          <div>
+            <AnimatedText
+              text="How I Work"
+              element="h2"
+              animation="slideIn"
+              type="words"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight"
+            />
+          </div>
+          <RevealOnScroll>
+            <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+              I believe great software is built at the intersection of business strategy
+              and technical excellence. Transparent communication, agile delivery, and
+              a relentless focus on quality drive every project I take on.
+            </p>
+          </RevealOnScroll>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4">Frontend</h3>
+        {/* Vertical Timeline */}
+        <div className="relative mb-12 md:mb-20">
+          {/* Timeline line */}
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/30 via-cyan-500/20 to-transparent" />
 
-              <div className="flex flex-wrap gap-2">
-                {frontendSkills.map((skill, key) => {
-                  return (
-                    <span
-                      key={key}
-                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
-                    hover:shadow-[0_2px_8px_rgba(59,130,2246,0.2)] transition"
-                    >
-                      {skill}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="space-y-6 md:space-y-10">
+            {processSteps.map((step, index) => (
+              <RevealOnScroll key={index} delay={index * 0.08}>
+                <div className="relative flex gap-6 md:gap-10 items-start pl-2 md:pl-4">
+                  {/* Timeline dot */}
+                  <div className="relative z-10 flex-shrink-0 mt-1">
+                    <div className="w-5 h-5 md:w-7 md:h-7 rounded-full border-2 border-blue-500/40 bg-[var(--bg-primary)] flex items-center justify-center">
+                      <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                    </div>
+                  </div>
 
-            <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4">Backend</h3>
-
-              <div className="flex flex-wrap gap-2">
-                {backendSkills.map((skill, key) => {
-                  return (
-                    <span
-                      key={key}
-                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
-                    hover:shadow-[0_2px_8px_rgba(59,130,2246,0.2)] transition"
-                    >
-                      {skill}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+                  {/* Content card */}
+                  <div className="flex-1 pb-2">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xs font-bold text-amber-400/70 font-mono">{step.number}</span>
+                      <h4 className="text-lg md:text-xl font-bold text-white">{step.title}</h4>
+                    </div>
+                    <p className="text-slate-400 text-sm leading-relaxed max-w-lg">{step.description}</p>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all ">
-            <h3 className="text-xl font-bold mb-4">🎓 Education</h3>
-            <ul className="space-y-6 text-gray-300">
-              <li>
-                <div className="font-semibold text-white">Full-Stack Web Development (MERN Stack)</div>
-                <div className="text-sm text-gray-400 mb-1">Geekster | 2024 – 2025</div>
-                <p className="text-sm">
-                  Completed hands-on training in modern web technologies with a
-                  focus on building full-stack applications using HTML,
-                  Tailwind CSS, JavaScript, React, and Node.js.
-                </p>
-              </li>
-              <li>
-                <div className="font-semibold text-white">Bachelor of Pharmacy</div>
-                <div className="text-sm text-gray-400 mb-1">Apollo College, Ahmedabad | 2018 – 2022</div>
-                <p className="text-sm">
-                  Built a strong foundation in analytical thinking and
-                  problem-solving through pharmaceutical studies.
-                </p>
-              </li>
-              <li className="pt-2 border-t border-white/10">
-                <span className="text-sm"><strong className="text-white">Relevant Coursework:</strong> Data Structures, Web Development, Cloud Computing...</span>
-              </li>
-            </ul>
-          </div>
+        {/* Tech Marquee */}
+        <RevealOnScroll>
+          <div className="relative">
+            <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">
+              Technologies I Work With
+            </h3>
+            <div className="overflow-hidden relative">
+              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
 
-          <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all ">
-            <h3 className="text-xl font-bold mb-4">💼 Work Experience</h3>
-            <div className="space-y-6 text-gray-300">
-              <div>
-                <h4 className="font-semibold text-white">
-                  Full-Stack Web Development Trainee
-                </h4>
-                <div className="text-sm text-gray-400 mb-2">Geekster | 2024 – 2025</div>
-                <p className="text-sm">
-                  Built and deployed real-world web applications using the MERN stack. Gained hands-on experience with frontend and backend development, API integration, and responsive UI design. Collaborated on projects following industry best practices.
-                </p>
+              <div className="marquee-track">
+                {marqueeItems.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="flex-shrink-0 mx-2 md:mx-3 px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-slate-300 bg-white/[0.03] border border-white/[0.06] rounded-lg hover:border-blue-500/30 hover:text-white transition-colors cursor-default"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
-      </RevealOnScroll>
     </section>
   );
 }

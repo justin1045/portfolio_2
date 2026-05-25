@@ -1,30 +1,65 @@
-import React, { useEffect, useRef } from 'react'
+import { useRef, useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-function ReviewOnScroll({children}) {
+gsap.registerPlugin(ScrollTrigger);
 
-    const ref = useRef(null);
+function RevealOnScroll({ children, stagger = false, delay = 0 }) {
+  const containerRef = useRef(null);
+  const prefersReducedMotion = typeof window !== 'undefined' 
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    useEffect(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); //stop observing after visible
-      }
-    });
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
-        },{threshold:0.2, rootMargin: "0px 0px -50px 0px"});
+  useGSAP(() => {
+    if (prefersReducedMotion) {
+      gsap.set(containerRef.current, { opacity: 1, y: 0 });
+      return;
+    }
 
-        if (ref.current) observer.observe(ref.current);
+    const triggerStart = isMobile ? 'top 92%' : 'top 85%';
+    const yDistance = isMobile ? 20 : 30;
 
-      return ()=> observer.disconnect();
+    if (stagger) {
+      const children = containerRef.current.children;
+      gsap.from(children, {
+        y: yDistance,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+        delay: delay,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: triggerStart,
+          toggleActions: 'play none none none',
+        },
+      });
+    } else {
+      gsap.from(containerRef.current, {
+        y: yDistance,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        delay: delay,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: triggerStart,
+          toggleActions: 'play none none none',
+        },
+      });
+    }
+  }, { scope: containerRef, dependencies: [isMobile] });
 
-    },[])
   return (
-    <>
-    <div ref={ref} className='reveal'>{children}</div>
-    </>
-  )
+    <div ref={containerRef}>
+      {children}
+    </div>
+  );
 }
 
-export default ReviewOnScroll
+export default RevealOnScroll;
