@@ -108,8 +108,8 @@ function Home() {
       glowPosition="center"
     >
 
-      <div className="w-full h-full pt-24 sm:pt-32 lg:pt-40 pb-12 lg:pb-24 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-8 lg:gap-16 items-center w-full">
+      <div className="w-full h-full pt-28 lg:pt-40 pb-12 lg:pb-24 flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           
           {/* ── Left Column: Content ── */}
           <div className="w-full order-1">
