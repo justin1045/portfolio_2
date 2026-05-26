@@ -57,7 +57,7 @@ function RoleRotator() {
   }, [animate]);
 
   return (
-    <div ref={containerRef} className="flex flex-col sm:flex-row sm:items-center items-start gap-1 sm:gap-3 mb-6 sm:mb-8 text-sm sm:text-base">
+    <div ref={containerRef} className="flex flex-col sm:flex-row sm:items-center items-start gap-1 sm:gap-3 mb-4 sm:mb-8 text-sm sm:text-base">
       <span className="text-slate-400 font-medium">Hi, I’m Chirag Tank <span className="hidden sm:inline">—</span></span>
       <div className="relative overflow-hidden h-[1.8em] min-w-[150px] sm:min-w-[200px]">
         <span
@@ -108,14 +108,14 @@ function Home() {
       glowPosition="center"
     >
 
-      <div className="w-full h-full pt-28 sm:pt-32 lg:pt-40 pb-16 lg:pb-24 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+      <div className="w-full h-full pt-24 sm:pt-32 lg:pt-40 pb-12 lg:pb-24 flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-8 lg:gap-16 items-center w-full">
           
           {/* ── Left Column: Content ── */}
           <div className="w-full order-1">
             
             {/* Status badge */}
-            <div className="hero-status mb-6 sm:mb-8" style={{ opacity: 0 }}>
+            <div className="hero-status mb-4 sm:mb-8">
               <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 text-xs sm:text-[0.8rem] font-medium text-green-400 bg-green-400/10 border border-green-400/20 rounded-full whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)] animate-pulse-dot flex-shrink-0" />
                 <span className="hidden sm:inline truncate">Available for freelance projects & full-stack opportunities</span>
@@ -132,25 +132,23 @@ function Home() {
               element="h1"
               animation="fadeUp"
               type="words"
-              className="text-3xl sm:text-5xl lg:text-6xl xl:text-[4rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-6 lg:mb-8 max-w-[900px] [text-wrap:balance]"
+              className="text-3xl sm:text-5xl lg:text-6xl xl:text-[4rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-4 lg:mb-8 max-w-[900px] [text-wrap:balance]"
             />
 
             {/* Subtitle */}
             <p
               ref={descRef}
-              className="hero-desc text-base sm:text-lg lg:text-xl text-[var(--text-secondary)] max-w-[36rem] leading-relaxed mb-8 sm:mb-10"
-              style={{ opacity: 0 }}
+              className="hero-desc text-sm sm:text-lg lg:text-xl text-[var(--text-secondary)] max-w-[36rem] leading-relaxed mb-6 sm:mb-10"
             >
               I create modern websites with React, Tailwind CSS, APIs, and deployment-ready code — focused on clean UI, speed, and usability.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-4 sm:mb-10">
               <MagneticButton strength={0.2} className="w-full sm:w-auto">
                 <a
                   href="#projects"
                   className="hero-cta btn-primary w-full sm:w-auto justify-center shadow-[0_4px_20px_rgba(59,130,246,0.25)]"
-                  style={{ opacity: 0 }}
                   data-cursor="pointer"
                 >
                   View Projects
@@ -161,7 +159,6 @@ function Home() {
                 <a
                   href="#contact"
                   className="hero-cta btn-outline w-full sm:w-auto justify-center"
-                  style={{ opacity: 0 }}
                   data-cursor="pointer"
                 >
                   Start a Conversation
@@ -170,15 +167,14 @@ function Home() {
             </div>
             
             <p 
-              className="hero-footer-text text-sm text-[var(--text-muted)] max-w-[36rem]"
-              style={{ opacity: 0 }}
+              className="hero-footer-text hidden sm:block text-sm text-[var(--text-muted)] max-w-[36rem]"
             >
               Open to freelance work, collaborations, and developer opportunities.
             </p>
           </div>
           
           {/* ── Right Column: Visual Element ── */}
-          <div className="mt-8 lg:mt-0 w-full flex justify-center lg:justify-end order-2">
+          <div className="w-full flex justify-center lg:justify-end order-2 mt-2 lg:mt-0">
             <HeroTerminal />
           </div>
         </div>
