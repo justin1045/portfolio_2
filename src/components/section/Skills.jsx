@@ -16,7 +16,7 @@ export default function Skills() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
         {skills.map((skillGroup, i) => (
           <RevealOnScroll key={skillGroup.category} animation="fade-up" delay={i * 0.1}>
-            <GlassCard className="p-6 sm:p-8 h-full">
+            <GlassCard className="p-5 sm:p-8 h-full">
               <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-3">
                 <span className="w-8 h-px bg-blue-500/50" />
                 {skillGroup.category}

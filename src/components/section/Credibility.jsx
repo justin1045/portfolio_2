@@ -43,7 +43,7 @@ export default function Credibility() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
         {expectations.map((item, index) => (
           <RevealOnScroll key={item.title} animation="scale-soft" delay={index * 0.1}>
-            <GlassCard className="p-8 h-full flex flex-col items-start group">
+            <GlassCard className="p-5 sm:p-6 lg:p-8 h-full flex flex-col items-start group">
               <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
                 <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

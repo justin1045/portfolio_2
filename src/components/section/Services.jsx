@@ -50,7 +50,7 @@ export default function Services() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
         {services.map((service, i) => (
           <RevealOnScroll key={service.id} animation="fade-up" delay={i * 0.1}>
-            <GlassCard className="p-8 sm:p-10 h-full flex flex-col">
+            <GlassCard className="p-5 sm:p-8 h-full flex flex-col">
               <div className="flex items-center gap-4 mb-6 relative z-10">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-500/10 transition-all duration-300">
                   {getIcon(service.icon)}

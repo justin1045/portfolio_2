@@ -17,8 +17,8 @@ export default function BackgroundSystem() {
       />
 
       {/* 3. Subtle Radial Aurora Glow */}
-      <div className="absolute top-[-20%] left-[20%] w-[100vw] h-[60vw] max-w-[1200px] max-h-[800px] rounded-full bg-blue-900/10 blur-[100px] mix-blend-screen opacity-50 sm:opacity-40" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[50vw] max-w-[1000px] max-h-[600px] rounded-full bg-violet-900/10 blur-[120px] mix-blend-screen opacity-30" />
+      <div className="absolute top-[-20%] left-[20%] w-full h-[60vw] max-w-[1200px] max-h-[800px] rounded-full bg-blue-900/10 blur-[100px] mix-blend-screen opacity-50 sm:opacity-40" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-full h-[50vw] max-w-[1000px] max-h-[600px] rounded-full bg-violet-900/10 blur-[120px] mix-blend-screen opacity-30" />
 
       {/* 3.5. Subtle Light Streaks */}
       <div className="absolute top-[20%] left-[-10%] w-[120%] h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent transform rotate-[-3deg] blur-[2px]" />

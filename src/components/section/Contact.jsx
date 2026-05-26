@@ -115,7 +115,7 @@ export default function Contact() {
           {/* Right Column: Form */}
           <div>
             <RevealOnScroll animation="fade-in" delay={0.4}>
-              <GlassCard className="p-6 sm:p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+              <GlassCard className="p-5 sm:p-8 lg:p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 opacity-50" />
                 
                 {status === "fallback" ? (
@@ -139,7 +139,7 @@ export default function Contact() {
                 ) : (
                   <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-2.5">
                         <label htmlFor="user_name" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Name <span className="text-red-500">*</span></label>
                         <input
@@ -166,7 +166,7 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-2.5">
                         <label htmlFor="project_type" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Project Type</label>
                         <select
@@ -223,7 +223,7 @@ export default function Contact() {
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          className="btn-primary w-full sm:w-auto min-w-[200px] flex justify-center items-center gap-2 disabled:opacity-50"
+                          className="btn-primary w-full sm:w-auto sm:min-w-[200px] flex justify-center items-center gap-2 disabled:opacity-50"
                         >
                           {status === "loading" ? (
                             <>

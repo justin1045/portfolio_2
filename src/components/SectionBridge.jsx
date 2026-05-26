@@ -2,7 +2,7 @@ import RevealOnScroll from "./RevealOnScroll";
 
 export default function SectionBridge({ number, eyebrow, message }) {
   return (
-    <div className="w-full relative py-12 sm:py-16 md:py-20 flex flex-col items-center justify-center border-t border-b border-white/10 bg-[rgba(255,255,255,0.02)] backdrop-blur-md">
+    <div className="w-full relative py-6 sm:py-10 lg:py-12 flex flex-col items-center justify-center border-t border-b border-white/10 bg-[rgba(255,255,255,0.02)] backdrop-blur-md">
       {/* Soft glow behind the line */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(6,182,212,0.03)] to-transparent pointer-events-none" aria-hidden="true" />
       
@@ -26,7 +26,7 @@ export default function SectionBridge({ number, eyebrow, message }) {
         </RevealOnScroll>
         
         <RevealOnScroll animation="fade-in" delay={0.2}>
-          <h3 className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] font-medium leading-relaxed max-w-xl mx-auto">
+          <h3 className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] font-medium leading-relaxed max-w-xl mx-auto">
             {message}
           </h3>
         </RevealOnScroll>

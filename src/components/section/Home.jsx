@@ -59,7 +59,7 @@ function RoleRotator() {
   return (
     <div ref={containerRef} className="flex flex-col sm:flex-row sm:items-center items-start gap-1 sm:gap-3 mb-6 sm:mb-8 text-sm sm:text-base">
       <span className="text-slate-400 font-medium">Hi, I’m Chirag Tank <span className="hidden sm:inline">—</span></span>
-      <div className="relative overflow-hidden h-[1.8em] min-w-[200px]">
+      <div className="relative overflow-hidden h-[1.8em] min-w-[150px] sm:min-w-[200px]">
         <span
           ref={textRef}
           className="role-text font-semibold text-white inline-block whitespace-nowrap"
@@ -138,7 +138,7 @@ function Home() {
               element="h1"
               animation="fadeUp"
               type="words"
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-6 lg:mb-8 max-w-[900px] [text-wrap:balance]"
+              className="text-3xl sm:text-5xl lg:text-6xl xl:text-[4rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-6 lg:mb-8 max-w-[900px] [text-wrap:balance]"
             />
 
             {/* Subtitle */}
@@ -152,7 +152,7 @@ function Home() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
-              <MagneticButton strength={0.2}>
+              <MagneticButton strength={0.2} className="w-full sm:w-auto">
                 <a
                   href="#projects"
                   className="hero-cta btn-primary w-full sm:w-auto justify-center shadow-[0_4px_20px_rgba(59,130,246,0.25)]"
@@ -163,7 +163,7 @@ function Home() {
                 </a>
               </MagneticButton>
 
-              <MagneticButton strength={0.2}>
+              <MagneticButton strength={0.2} className="w-full sm:w-auto">
                 <a
                   href="#contact"
                   className="hero-cta btn-outline w-full sm:w-auto justify-center"

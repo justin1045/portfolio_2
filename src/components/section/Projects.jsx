@@ -13,7 +13,7 @@ function ProjectCard({ project }) {
   return (
     <GlassCard className="flex flex-col h-full">
       {/* Card Header */}
-      <div className="p-6 sm:p-8 flex-1 flex flex-col relative z-10">
+      <div className="p-5 sm:p-6 lg:p-8 flex-1 flex flex-col relative z-10">
         
         {/* Category & Status */}
         <div className="flex items-center justify-between mb-4">
@@ -103,7 +103,7 @@ function FeaturedProject({ project }) {
       />
       
       {/* Content Side */}
-      <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col relative z-10">
+      <div className="w-full lg:w-1/2 p-5 sm:p-8 lg:p-12 flex flex-col relative z-10">
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-mono tracking-widest text-[var(--text-muted)] uppercase">
             Featured Case Study
@@ -160,7 +160,7 @@ function FeaturedProject({ project }) {
       </div>
 
       {/* Visual / Data Side */}
-      <div className="w-full lg:w-1/2 bg-[var(--bg-primary)]/50 border-l border-[var(--border-subtle)] p-8 sm:p-12 flex flex-col justify-center relative overflow-hidden">
+      <div className="w-full lg:w-1/2 bg-[var(--bg-primary)]/50 border-t lg:border-t-0 lg:border-l border-[var(--border-subtle)] p-5 sm:p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         
         <GlassCard className="p-6 sm:p-8 shadow-2xl transform lg:translate-x-4 lg:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700 ease-out" hoverEffect={false}>

@@ -103,7 +103,7 @@ function MobileMenu({ menuOpen, setMenuOpen }) {
           key={link.id}
           href={`#${link.id}`}
           onClick={() => setMenuOpen(false)}
-          className="mobile-link text-4xl md:text-5xl font-bold text-white my-4 hover:text-blue-400 transition-colors"
+          className="mobile-link text-3xl sm:text-4xl md:text-5xl font-bold text-white my-4 hover:text-blue-400 transition-colors"
           style={{ opacity: 0 }}
         >
           {link.label}

@@ -66,7 +66,7 @@ export default function HeroTerminal() {
         </div>
 
         {/* Code Snippet */}
-        <div className="bg-[#05070D] rounded-xl p-4 border border-[var(--border-subtle)] font-mono text-[13px] leading-relaxed workspace-item">
+        <div className="bg-[#05070D] rounded-xl p-4 border border-[var(--border-subtle)] font-mono text-[13px] leading-relaxed workspace-item overflow-x-auto">
           <div className="flex gap-4">
             <div className="flex flex-col text-slate-600 select-none text-right">
               <span>1</span><span>2</span><span>3</span><span>4</span>
