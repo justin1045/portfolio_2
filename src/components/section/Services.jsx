@@ -1,123 +1,89 @@
+import { useRef } from "react";
+import SectionHeader from "../SectionHeader";
 import RevealOnScroll from "../RevealOnScroll";
-import AnimatedText from "../AnimatedText";
+import MagneticButton from "../MagneticButton";
+import { services } from "../../data/services";
 
-export default function Services() {
-  const services = [
-    {
-      title: "Responsive Website Development",
-      description: "Clean, mobile-first websites built with React, Tailwind CSS, and modern frontend practices.",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+// Quick icon mapping helper
+const getIcon = (iconName) => {
+  switch (iconName) {
+    case "laptop":
+      return (
+        <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
-      ),
-      tech: ["React", "Tailwind CSS", "JavaScript"],
-      color: "var(--accent-blue)",
-    },
-    {
-      title: "Web App UI & Functionality",
-      description: "Interactive interfaces, dashboards, forms, API integrations, and practical features built for real users.",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      );
+    case "code":
+      return (
+        <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
-      ),
-      tech: ["React", "Node.js", "REST APIs"],
-      color: "var(--accent-purple)",
-    },
-    {
-      title: "Portfolio / Landing Pages",
-      description: "Professional landing pages and digital presence websites for individuals, startups, and small businesses.",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      );
+    case "layout":
+      return (
+        <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
         </svg>
-      ),
-      tech: ["HTML5", "CSS3", "GSAP"],
-      color: "var(--accent-cyan)",
-    },
-    {
-      title: "Frontend Improvement",
-      description: "UI cleanup, responsive fixes, performance improvements, and better user experience for existing websites.",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      );
+    case "tool":
+      return (
+        <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-      ),
-      tech: ["Responsive Design", "Bug Fixing", "UI/UX"],
-      color: "var(--accent-warm)",
-    },
-  ];
+      );
+    default:
+      return null;
+  }
+};
+
+export default function Services() {
+  const containerRef = useRef(null);
 
   return (
-    <section id="services" className="py-16 md:py-32 relative z-10">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
-        {/* Section label */}
-        <div className="inline-flex items-center gap-3 font-mono text-sm font-medium text-accent-blue tracking-widest uppercase mb-5">
-          <span className="text-accent-warm font-bold">01</span>
-          <span className="w-10 h-px bg-accent-blue/40" />
-          <span>Services</span>
-        </div>
+    <section id="services" ref={containerRef} className="py-24 sm:py-32 lg:py-40 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        
+        <SectionHeader 
+          title="Practical services for real requirements."
+          description="I don't build generic templates. I build specific, responsive, and deployment-ready solutions tailored to your goals."
+          align="center"
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-start">
-          {/* Left: Heading */}
-          <div>
-            <AnimatedText
-              text="What I Do"
-              element="h2"
-              animation="fadeUp"
-              type="words"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-            />
-            <RevealOnScroll>
-              <p className="text-slate-400 text-lg leading-relaxed">
-                Specialized services designed to elevate your digital presence and solve complex technical challenges.
-              </p>
-            </RevealOnScroll>
-          </div>
-
-          {/* Right: Cards */}
-          <div className="space-y-5">
-            {services.map((service, index) => (
-              <RevealOnScroll key={index} delay={index * 0.1}>
-                <div className="bg-white/[0.04] backdrop-blur-md border border-white/8 rounded-2xl hover:bg-white/[0.07] hover:border-accent-blue/30 hover:shadow-[0_8px_40px_rgba(59,130,246,0.08),0_0_0_1px_rgba(59,130,246,0.05)] p-5 sm:p-6 md:p-8 group hover:-translate-y-1 transition-all duration-400 flex flex-col sm:flex-row gap-4 sm:gap-6">
-                  {/* Icon */}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border transition-colors duration-300"
-                    style={{
-                      color: service.color,
-                      borderColor: `color-mix(in srgb, ${service.color} 20%, transparent)`,
-                      background: `color-mix(in srgb, ${service.color} 8%, transparent)`,
-                    }}
-                  >
-                    {service.icon}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                      <svg
-                        className="w-5 h-5 text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
-                    <p className="text-slate-400 text-sm mb-4 leading-relaxed">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.tech.map((t) => (
-                        <span key={t} className="inline-block px-3 py-1 text-xs font-medium text-text-secondary bg-white/[0.04] border border-border-subtle rounded-lg transition-all duration-300 hover:text-white hover:bg-accent-blue/10 hover:border-accent-blue/25">{t}</span>
-                      ))}
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {services.map((service, i) => (
+            <RevealOnScroll key={service.id} animation="fade-up" delay={i * 0.1}>
+              <div className="group relative p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition-all duration-300 h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
+                <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {getIcon(service.icon)}
                 </div>
-              </RevealOnScroll>
-            ))}
-          </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+                  {service.description}
+                </p>
+              </div>
+            </RevealOnScroll>
+          ))}
         </div>
+
+        <RevealOnScroll animation="fade-in" delay={0.4}>
+          <div className="flex justify-center">
+            <MagneticButton strength={0.2}>
+              <a href="#contact" className="btn-primary group flex items-center gap-2" data-cursor="pointer">
+                Need something similar? Let’s talk
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </MagneticButton>
+          </div>
+        </RevealOnScroll>
+
       </div>
     </section>
   );

@@ -50,7 +50,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
         },
       });
 
-      const sections = ["home", "services", "projects", "approach", "testimonials", "contact"];
+      const sections = ["home", "services", "projects", "process", "skills", "credibility", "contact"];
       sections.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -69,9 +69,8 @@ function Navbar({ menuOpen, setMenuOpen }) {
   const navLinks = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "approach", label: "Process" },
-    { id: "about", label: "About" },
+    { id: "projects", label: "Work" },
+    { id: "process", label: "Process" },
     { id: "contact", label: "Contact" },
   ];
 

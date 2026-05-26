@@ -4,6 +4,7 @@ const projects = [
     title: "Food Delivery Platform",
     category: "Web App",
     shortDescription: "A responsive food delivery web app with product browsing, cart flow, and modern UI interactions.",
+    clientType: "Personal Project",
     problem: "Food ordering interfaces need to be fast, clear, and easy to use across devices.",
     solution: "Built a responsive React-based interface with clean navigation, reusable components, and a deployment-ready structure.",
     keyFeatures: [
@@ -18,6 +19,7 @@ const projects = [
     repoUrl: null,
     status: "Live",
     takeaway: "Improved my ability to structure real-world UI flows and responsive cards.",
+    credibilityNote: "Focuses heavily on reusable React components and state management for cart systems.",
     color: "#3b82f6",
   },
   {
@@ -25,6 +27,7 @@ const projects = [
     title: "Expense Tracker UI",
     category: "Dashboard",
     shortDescription: "A clean and interactive personal finance dashboard for tracking expenses and visualizing data.",
+    clientType: "Personal Project",
     problem: "Financial data can be overwhelming if not presented with clear visual hierarchy and structure.",
     solution: "Developed an interactive dashboard focusing on data visualization and clean layout for quick scanning.",
     keyFeatures: [
@@ -39,6 +42,7 @@ const projects = [
     repoUrl: null,
     status: "Live",
     takeaway: "Gained hands-on experience integrating third-party charting libraries with custom UI.",
+    credibilityNote: "Demonstrates capability to integrate and style external libraries (Chart.js) within a modern design system.",
     color: "#06b6d4",
   },
   {
@@ -46,6 +50,7 @@ const projects = [
     title: "Pokémon Search & Filter",
     category: "Interactive Interface",
     shortDescription: "A fast search and filter interface integrating with a public API to display a large dataset.",
+    clientType: "Personal Project",
     problem: "Users need to instantly search and filter through hundreds of items without UI lag.",
     solution: "Implemented efficient client-side filtering and search against a REST API with CSS flip animations.",
     keyFeatures: [
@@ -60,6 +65,7 @@ const projects = [
     repoUrl: null,
     status: "Live",
     takeaway: "Deepened my understanding of efficient DOM manipulation and REST API integration.",
+    credibilityNote: "Shows practical experience in handling asynchronous data fetching and real-time state filtering.",
     color: "#8b5cf6",
   },
   {
@@ -67,6 +73,7 @@ const projects = [
     title: "Infinite Image Gallery",
     category: "Web App",
     shortDescription: "A visually immersive gallery that loads images continuously via infinite scroll.",
+    clientType: "Personal Project",
     problem: "Loading large numbers of high-resolution images can cause browser lag and bad UX.",
     solution: "Built a custom intersection observer implementation to load assets smoothly as the user scrolls.",
     keyFeatures: [
@@ -81,6 +88,7 @@ const projects = [
     repoUrl: null,
     status: "Live",
     takeaway: "Mastered the Intersection Observer API for performance optimization.",
+    credibilityNote: "Illustrates performance-conscious development, specifically around browser painting and lazy loading.",
     color: "#ec4899",
   }
 ];

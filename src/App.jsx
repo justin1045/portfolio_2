@@ -4,12 +4,17 @@ import Navbar from "./components/Navbar";
 import MobileMenu from "./components/MobileMenu";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
+import ChapterNav from "./components/ChapterNav";
+import BackgroundSystem from "./components/BackgroundSystem";
+import SectionBridge from "./components/SectionBridge";
 import StickyCTA from "./components/StickyCTA";
+import { sectionBridges } from "./data/sectionBridges";
+
 import Home from "./components/section/Home";
-import TrustBar from "./components/section/TrustBar";
 import Services from "./components/section/Services";
 import Projects from "./components/section/Projects";
-import About from "./components/section/About";
+import Process from "./components/section/Process";
+import Skills from "./components/section/Skills";
 import Credibility from "./components/section/Credibility";
 import Contact from "./components/section/Contact";
 import Footer from "./components/Footer";
@@ -23,18 +28,14 @@ function App() {
       <CustomCursor />
       <Loading onComplete={() => setIsLoaded(true)} />
 
-      {/* Aurora Background */}
-      <div className="aurora-bg" aria-hidden="true">
-        <div className="aurora-orb-3" />
-      </div>
+      {/* Global Background System */}
+      <BackgroundSystem />
 
-      {/* Grain Texture */}
-      <div className="grain-overlay" aria-hidden="true" />
-
-      {/* Scroll Progress (desktop/tablet) */}
+      {/* Progress & Navigation */}
       <ScrollProgress />
+      <ChapterNav />
 
-      {/* Main Content — PSYCHOLOGY-DRIVEN ORDER */}
+      {/* Main Content — THE DEVELOPER JOURNEY */}
       <div
         className={`relative z-10 min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
@@ -43,26 +44,34 @@ function App() {
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-        {/* 1. HOOK — Who are you? Why should I care? */}
-        <Home />
+        <main>
+          {/* 1. HOOK */}
+          <Home />
+          <SectionBridge {...sectionBridges.homeToServices} />
 
-        {/* 2. TRUST — Numbers don't lie (anchoring) */}
-        <TrustBar />
+          {/* 2. VALUE */}
+          <Services />
+          <SectionBridge {...sectionBridges.servicesToProjects} />
 
-        {/* 3. VALUE — What's in it for me? */}
-        <Services />
+          {/* 3. PROOF */}
+          <Projects />
+          <SectionBridge {...sectionBridges.projectsToProcess} />
 
-        {/* 4. PROOF — Show, don't tell */}
-        <Projects />
+          {/* 4. COMFORT (How I Work) */}
+          <Process />
+          <SectionBridge {...sectionBridges.processToSkills} />
 
-        {/* 5. COMFORT — Reduce anxiety about the process */}
-        <About />
+          {/* 5. CAPABILITY (Stack) */}
+          <Skills />
+          <SectionBridge {...sectionBridges.skillsToCredibility} />
 
-        {/* 6. CREDIBILITY — What You Can Expect */}
-        <Credibility />
+          {/* 6. CREDIBILITY (Expectations) */}
+          <Credibility />
+          <SectionBridge {...sectionBridges.credibilityToContact} />
 
-        {/* 7. ACTION — Make it easy to say yes */}
-        <Contact />
+          {/* 7. ACTION */}
+          <Contact />
+        </main>
 
         <Footer />
       </div>

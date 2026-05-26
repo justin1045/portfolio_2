@@ -8,9 +8,8 @@ function MobileMenu({ menuOpen, setMenuOpen }) {
   const links = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "approach", label: "Process" },
-    { id: "about", label: "About" },
+    { id: "projects", label: "Work" },
+    { id: "process", label: "Process" },
     { id: "contact", label: "Contact" },
   ];
 

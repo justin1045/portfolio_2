@@ -170,14 +170,18 @@ function Home() {
                   style={{ opacity: 0 }}
                   data-cursor="pointer"
                 >
-                  Contact Me
+                  Start a Conversation
                 </a>
               </MagneticButton>
             </div>
+            
+            <p className="text-sm text-slate-500 mb-8 max-w-[36rem]">
+              Open to freelance work, collaborations, and developer opportunities.
+            </p>
 
             {/* Value Chips */}
             <div ref={chipsRef} className="flex flex-wrap gap-2 sm:gap-3 mb-10">
-              {["React + Tailwind", "Responsive UI", "Deployment Ready"].map((chip) => (
+              {["Responsive UI", "Clean Code", "Deployment Ready"].map((chip) => (
                 <span key={chip} className="hero-chip text-xs font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] rounded-full px-3 py-1.5" style={{ opacity: 0 }}>
                   {chip}
                 </span>
