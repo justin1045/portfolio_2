@@ -9,7 +9,7 @@ export default function SectionHeader({
   maxWidth = "max-w-2xl" 
 }) {
   return (
-    <div className={`mb-16 sm:mb-24 ${align === "center" ? "text-center mx-auto" : ""} ${maxWidth}`}>
+    <div className={`mb-10 sm:mb-16 lg:mb-24 ${align === "center" ? "text-center mx-auto" : ""} ${maxWidth}`}>
       <RevealOnScroll animation="fade-up" delay={0.1}>
         <div className={`flex items-center gap-4 mb-4 ${align === "center" ? "justify-center" : ""}`}>
           {number && (

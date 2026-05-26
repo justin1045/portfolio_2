@@ -47,7 +47,7 @@ export default function Services() {
         align="center"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
         {services.map((service, i) => (
           <RevealOnScroll key={service.id} animation="fade-up" delay={i * 0.1}>
             <GlassCard className="p-5 sm:p-8 h-full flex flex-col">

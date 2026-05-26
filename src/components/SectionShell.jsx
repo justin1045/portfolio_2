@@ -10,9 +10,9 @@ const SectionShell = forwardRef(({
   
   const paddingClass = variant === "hero" 
     ? "py-0"
-    : variant === "compact" 
-      ? "py-10 sm:py-14 lg:py-16" 
-      : "py-14 sm:py-20 lg:py-24";
+      : variant === "compact" 
+      ? "py-8 sm:py-14 lg:py-16" 
+      : "py-10 sm:py-20 lg:py-24";
 
   return (
     <section 

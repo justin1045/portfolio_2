@@ -40,7 +40,7 @@ export default function Credibility() {
         align="center"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
         {expectations.map((item, index) => (
           <RevealOnScroll key={item.title} animation="scale-soft" delay={index * 0.1}>
             <GlassCard className="p-5 sm:p-6 lg:p-8 h-full flex flex-col items-start group">

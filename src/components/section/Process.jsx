@@ -37,7 +37,7 @@ export default function Process() {
         {/* Vertical Line Mobile */}
         <div className="md:hidden absolute left-[20px] top-0 bottom-0 w-px bg-[var(--border-subtle)]" />
 
-        <div className="flex flex-col gap-8 sm:gap-12">
+        <div className="flex flex-col gap-6 sm:gap-12">
           {steps.map((step, index) => (
             <RevealOnScroll key={index} animation="fade-up" delay={index * 0.1}>
               <div className={`relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} group`}>

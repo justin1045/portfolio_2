@@ -13,7 +13,7 @@ export default function Skills() {
         align="left"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12">
         {skills.map((skillGroup, i) => (
           <RevealOnScroll key={skillGroup.category} animation="fade-up" delay={i * 0.1}>
             <GlassCard className="p-5 sm:p-8 h-full">
