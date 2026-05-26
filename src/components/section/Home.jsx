@@ -108,8 +108,8 @@ function Home() {
       glowPosition="center"
     >
 
-      <div className="w-full h-full pt-28 lg:pt-40 pb-12 lg:pb-24 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+      <div className="w-full min-h-[100svh] lg:min-h-0 pt-28 lg:pt-40 pb-12 lg:pb-24 flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full">
           
           {/* ── Left Column: Content ── */}
           <div className="w-full order-1">
@@ -174,7 +174,7 @@ function Home() {
           </div>
           
           {/* ── Right Column: Visual Element ── */}
-          <div className="w-full flex justify-center lg:justify-end order-2 mt-2 lg:mt-0">
+          <div className="hidden lg:flex w-full justify-center lg:justify-end order-2 mt-2 lg:mt-0">
             <HeroTerminal />
           </div>
         </div>
