@@ -2,11 +2,13 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import RevealOnScroll from "../RevealOnScroll";
 import MagneticButton from "../MagneticButton";
+import SectionShell from "../SectionShell";
+import GlassCard from "../GlassCard";
 import { socialLinks } from "../../data/socialLinks";
 
 export default function Contact() {
   const form = useRef();
-  const [status, setStatus] = useState("idle"); // idle, loading, success, error, fallback
+  const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   const sendEmail = (e) => {
@@ -16,8 +18,8 @@ export default function Contact() {
     const formData = new FormData(form.current);
     const message = formData.get("message");
 
-    if (message.length < 20) {
-      setErrorMsg("Please provide a bit more detail (minimum 20 characters).");
+    if (message.length < 15) {
+      setErrorMsg("Please provide a bit more detail (minimum 15 characters).");
       return;
     }
 
@@ -27,7 +29,7 @@ export default function Contact() {
 
     if (!serviceId || !templateId || !publicKey) {
       setStatus("fallback");
-      return; // Stop execution if EmailJS is missing
+      return; 
     }
 
     setStatus("loading");
@@ -59,28 +61,39 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 lg:py-40 relative z-10">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        
+    <SectionShell id="contact" glowPosition="bottom-right">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           {/* Left Column: Copy */}
-          <div>
+          <div className="flex flex-col justify-center">
             <RevealOnScroll animation="fade-up" delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
                 Have a project, collaboration, or opportunity in mind?
               </h2>
             </RevealOnScroll>
             
             <RevealOnScroll animation="fade-up" delay={0.2}>
-              <p className="text-lg text-slate-400 mb-8 max-w-lg">
-                Send me the details and I’ll get back with a clear next step. You can also reach out for a quick website review.
+              <p className="text-lg text-[var(--text-secondary)] mb-10 max-w-lg leading-relaxed">
+                Share a few details and I’ll respond with a clear next step. You can also reach out for a quick website review.
               </p>
+            </RevealOnScroll>
+
+            {/* Trust Bullets */}
+            <RevealOnScroll animation="fade-up" delay={0.25}>
+              <ul className="space-y-4 mb-10">
+                {["Responsive website builds", "Clean UI implementation", "Project discussion before development", "Deployment support"].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </RevealOnScroll>
 
             <RevealOnScroll animation="fade-up" delay={0.3}>
               <div className="flex flex-col gap-4">
-                <span className="text-sm font-semibold text-slate-300 uppercase tracking-widest">Connect Directly</span>
+                <span className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-widest">Connect Directly</span>
                 <div className="flex flex-wrap gap-4">
                   {socialLinks.map((link) => (
                     <a
@@ -88,7 +101,7 @@ export default function Contact() {
                       href={link.url}
                       target={link.name !== "Email" ? "_blank" : undefined}
                       rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors bg-white/[0.03] border border-white/[0.05] rounded-full px-4 py-2"
+                      className="flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-white transition-colors bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-default)] rounded-full px-5 py-2.5"
                     >
                       {getIcon(link.icon)}
                       {link.name}
@@ -102,113 +115,115 @@ export default function Contact() {
           {/* Right Column: Form */}
           <div>
             <RevealOnScroll animation="fade-in" delay={0.4}>
-              <div className="bg-white/[0.02] border border-white/[0.05] p-6 sm:p-8 rounded-3xl">
+              <GlassCard className="p-6 sm:p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 opacity-50" />
+                
                 {status === "fallback" ? (
                   <div className="text-center py-12">
-                    <svg className="w-12 h-12 text-yellow-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    <svg className="w-12 h-12 text-amber-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                     <h3 className="text-xl font-bold text-white mb-2">Email setup is not connected yet.</h3>
-                    <p className="text-slate-400 mb-6">Please contact me directly using the email link.</p>
-                    {/* TODO: Configure EmailJS environment variables in Vercel */}
+                    <p className="text-[var(--text-secondary)] mb-6 text-sm">Please contact me directly using the email link.</p>
                     <a href={socialLinks.find(l => l.name === "Email")?.url} className="btn-primary inline-flex">Send Direct Email</a>
                   </div>
                 ) : status === "success" ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                       <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                    <p className="text-slate-400 mb-8">I'll get back to you shortly with a clear next step.</p>
-                    <button onClick={() => setStatus("idle")} className="text-sm text-blue-400 hover:text-blue-300">
+                    <p className="text-[var(--text-secondary)] mb-8 text-sm">I'll get back to you shortly with a clear next step.</p>
+                    <button onClick={() => setStatus("idle")} className="text-sm font-medium text-blue-400 hover:text-blue-300">
                       Send another message
                     </button>
                   </div>
                 ) : (
-                  <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
+                  <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="user_name" className="text-sm font-medium text-slate-300">Name <span className="text-red-500">*</span></label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2.5">
+                        <label htmlFor="user_name" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Name <span className="text-red-500">*</span></label>
                         <input
                           type="text"
                           name="user_name"
                           id="user_name"
                           required
-                          className="bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
-                          placeholder="John Doe"
+                          disabled={status === "loading"}
+                          className="bg-white/[0.03] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500/50 transition-all text-sm disabled:opacity-50"
+                          placeholder="Jane Doe"
                         />
                       </div>
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="user_email" className="text-sm font-medium text-slate-300">Email <span className="text-red-500">*</span></label>
+                      <div className="flex flex-col gap-2.5">
+                        <label htmlFor="user_email" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Email <span className="text-red-500">*</span></label>
                         <input
                           type="email"
                           name="user_email"
                           id="user_email"
                           required
-                          className="bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
-                          placeholder="john@example.com"
+                          disabled={status === "loading"}
+                          className="bg-white/[0.03] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500/50 transition-all text-sm disabled:opacity-50"
+                          placeholder="jane@example.com"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="project_type" className="text-sm font-medium text-slate-300">Project Type</label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2.5">
+                        <label htmlFor="project_type" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Project Type</label>
                         <select
                           name="project_type"
                           id="project_type"
-                          className="bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-all appearance-none cursor-pointer"
+                          disabled={status === "loading"}
+                          className="bg-white/[0.03] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-all appearance-none cursor-pointer text-sm disabled:opacity-50"
                         >
-                          <option value="New Website" className="bg-slate-900">New Website</option>
-                          <option value="Portfolio / Landing Page" className="bg-slate-900">Portfolio / Landing Page</option>
-                          <option value="Web App Interface" className="bg-slate-900">Web App Interface</option>
-                          <option value="Existing Website Improvement" className="bg-slate-900">Existing Website Improvement</option>
-                          <option value="Collaboration / Opportunity" className="bg-slate-900">Collaboration / Opportunity</option>
+                          <option value="New Website" className="bg-[#0B1020]">New Website</option>
+                          <option value="Landing Page / Portfolio" className="bg-[#0B1020]">Landing Page / Portfolio</option>
+                          <option value="Web App Interface" className="bg-[#0B1020]">Web App Interface</option>
+                          <option value="Existing Website Improvement" className="bg-[#0B1020]">Existing Website Improvement</option>
+                          <option value="Collaboration / Opportunity" className="bg-[#0B1020]">Collaboration / Opportunity</option>
                         </select>
                       </div>
                       
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="budget" className="text-sm font-medium text-slate-300">Budget Range <span className="text-slate-600 font-normal">(Optional)</span></label>
+                      <div className="flex flex-col gap-2.5">
+                        <label htmlFor="budget" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Budget Range <span className="text-[var(--text-secondary)] font-normal normal-case tracking-normal">(Optional)</span></label>
                         <select
                           name="budget"
                           id="budget"
-                          className="bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-all appearance-none cursor-pointer"
+                          disabled={status === "loading"}
+                          className="bg-white/[0.03] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-all appearance-none cursor-pointer text-sm disabled:opacity-50"
                         >
-                          <option value="Not sure yet" className="bg-slate-900">Not sure yet</option>
-                          <option value="Small project" className="bg-slate-900">Small project</option>
-                          <option value="Medium project" className="bg-slate-900">Medium project</option>
-                          <option value="Let's discuss" className="bg-slate-900">Let's discuss</option>
+                          <option value="Not sure yet" className="bg-[#0B1020]">Not sure yet</option>
+                          <option value="Small project" className="bg-[#0B1020]">Small project</option>
+                          <option value="Medium project" className="bg-[#0B1020]">Medium project</option>
+                          <option value="Let's discuss" className="bg-[#0B1020]">Let's discuss</option>
                         </select>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="message" className="text-sm font-medium text-slate-300">Message <span className="text-red-500">*</span></label>
+                    <div className="flex flex-col gap-2.5">
+                      <label htmlFor="message" className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Message <span className="text-red-500">*</span></label>
                       <textarea
                         name="message"
                         id="message"
                         required
-                        rows="5"
-                        className="bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all resize-none"
+                        disabled={status === "loading"}
+                        rows="4"
+                        className="bg-white/[0.03] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500/50 transition-all resize-none text-sm disabled:opacity-50"
                         placeholder="Tell me about your project or opportunity..."
                       ></textarea>
                     </div>
 
                     {errorMsg && (
-                      <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 px-4 py-2 rounded-lg">
+                      <p className="text-sm font-medium text-red-400 bg-red-400/10 border border-red-400/20 px-4 py-3 rounded-lg">
                         {errorMsg}
                       </p>
                     )}
 
-                    <div className="mt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                      <span className="text-xs text-slate-500">
-                        Share a few details — I’ll respond with a practical next step.
-                      </span>
-                      
+                    <div className="mt-4 flex flex-col sm:flex-row items-center justify-end gap-4 border-t border-[var(--border-subtle)] pt-6">
                       <MagneticButton strength={0.1}>
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          className="btn-primary w-full sm:w-auto min-w-[160px] flex justify-center items-center gap-2"
+                          className="btn-primary w-full sm:w-auto min-w-[200px] flex justify-center items-center gap-2 disabled:opacity-50"
                         >
                           {status === "loading" ? (
                             <>
@@ -219,18 +234,18 @@ export default function Contact() {
                               Sending...
                             </>
                           ) : (
-                            "Start a Conversation"
+                            "Send Message"
                           )}
                         </button>
                       </MagneticButton>
                     </div>
                   </form>
                 )}
-              </div>
+              </GlassCard>
             </RevealOnScroll>
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 }

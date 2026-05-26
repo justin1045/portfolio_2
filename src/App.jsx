@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
 import MobileMenu from "./components/MobileMenu";
@@ -9,6 +9,8 @@ import BackgroundSystem from "./components/BackgroundSystem";
 import SectionBridge from "./components/SectionBridge";
 import StickyCTA from "./components/StickyCTA";
 import { sectionBridges } from "./data/sectionBridges";
+import ScrollLight from "./components/ScrollLight";
+import ProgressSpine from "./components/ProgressSpine";
 
 import Home from "./components/section/Home";
 import Services from "./components/section/Services";
@@ -22,14 +24,12 @@ import Footer from "./components/Footer";
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const mainContainer = useRef(null);
 
   return (
     <div className="relative w-full overflow-x-hidden">
       <CustomCursor />
       <Loading onComplete={() => setIsLoaded(true)} />
-
-      {/* Global Background System */}
-      <BackgroundSystem />
 
       {/* Progress & Navigation */}
       <ScrollProgress />
@@ -37,10 +37,14 @@ function App() {
 
       {/* Main Content — THE DEVELOPER JOURNEY */}
       <div
-        className={`relative z-10 min-h-screen transition-opacity duration-700 ${
+        ref={mainContainer}
+        className={`relative z-10 min-h-screen transition-opacity duration-700 bg-[var(--bg-primary)] text-[var(--text-primary)] ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
+        <BackgroundSystem />
+        <ScrollLight />
+        <ProgressSpine />
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 

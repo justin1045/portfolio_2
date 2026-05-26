@@ -1,6 +1,7 @@
-import { useRef } from "react";
 import SectionHeader from "../SectionHeader";
 import RevealOnScroll from "../RevealOnScroll";
+import SectionShell from "../SectionShell";
+import GlassCard from "../GlassCard";
 import MagneticButton from "../MagneticButton";
 
 const expectations = [
@@ -31,33 +32,37 @@ const expectations = [
 ];
 
 export default function Credibility() {
-  const containerRef = useRef(null);
-
   return (
-    <section id="credibility" ref={containerRef} className="py-24 sm:py-32 lg:py-40 relative z-10">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title="What you can expect."
-          description="A professional standard for every project. I prioritize reliability and clean delivery over buzzwords."
-          align="center"
-        />
+    <SectionShell id="credibility" glowPosition="none">
+      <SectionHeader 
+        title="What you can expect."
+        description="A professional standard for every project. I prioritize reliability and clean delivery over buzzwords."
+        align="center"
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
-          {expectations.map((item, index) => (
-            <RevealOnScroll key={index} animation="scale-soft" delay={index * 0.1}>
-              <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] h-full hover:border-blue-500/30 transition-colors duration-300 group">
-                <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+        {expectations.map((item, index) => (
+          <RevealOnScroll key={item.title} animation="scale-soft" delay={index * 0.1}>
+            <GlassCard className="p-8 h-full flex flex-col items-start group">
+              <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
               </div>
-            </RevealOnScroll>
-          ))}
-        </div>
+              
+              <h3 className="text-lg font-bold text-white mb-3">
+                {item.title}
+              </h3>
+              
+              <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </GlassCard>
+          </RevealOnScroll>
+        ))}
+      </div>
 
+      <div className="mt-16">
         <RevealOnScroll animation="fade-in" delay={0.4}>
           <div className="flex justify-center">
             <MagneticButton strength={0.2}>
@@ -67,8 +72,7 @@ export default function Credibility() {
             </MagneticButton>
           </div>
         </RevealOnScroll>
-
       </div>
-    </section>
+    </SectionShell>
   );
 }

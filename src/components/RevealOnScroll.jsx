@@ -33,9 +33,9 @@ function RevealOnScroll({ children, animation = "fade-up", stagger = false, dela
     // Define animation variants
     const animations = {
       "fade-up": {
-        y: isMobile ? 20 : 30,
+        y: isMobile ? 16 : 24,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.75,
         ease: 'power3.out'
       },
       "fade-in": {

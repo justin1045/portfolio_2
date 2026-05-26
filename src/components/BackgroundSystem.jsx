@@ -1,62 +1,37 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 export default function BackgroundSystem() {
-  const containerRef = useRef(null);
-  const glowRef = useRef(null);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!prefersReducedMotion && glowRef.current) {
-      // Subtle parallax on the glow based on scroll
-      gsap.to(glowRef.current, {
-        y: "30vh",
-        ease: "none",
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-  }, []);
-
   return (
     <div 
-      ref={containerRef}
-      className="fixed inset-0 z-0 pointer-events-none bg-[#05070d] overflow-hidden" 
+      className="fixed inset-0 z-0 pointer-events-none bg-[var(--bg-primary)] overflow-hidden" 
       aria-hidden="true"
     >
-      {/* 1. Deep dark base is handled by bg-[#05070d] */}
+      {/* 1. Base Dark Layer is handled by the wrapper bg color */}
       
-      {/* 2. Very subtle grid */}
+      {/* 2. Soft Grid Layer */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M39 39V1H1v38h38zM0 0h40v40H0V0z' fill='%23ffffff' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+          maskImage: "radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%)"
         }}
       />
 
-      {/* 3. Slow aurora / radial glow */}
-      <div 
-        ref={glowRef}
-        className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-blue-900/20 blur-[120px] mix-blend-screen opacity-50 transition-opacity duration-1000"
-      />
-      <div 
-        className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-violet-900/10 blur-[120px] mix-blend-screen opacity-40"
-      />
+      {/* 3. Subtle Radial Aurora Glow */}
+      <div className="absolute top-[-20%] left-[20%] w-[100vw] h-[60vw] max-w-[1200px] max-h-[800px] rounded-full bg-blue-900/10 blur-[100px] mix-blend-screen opacity-50 sm:opacity-40" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[50vw] max-w-[1000px] max-h-[600px] rounded-full bg-violet-900/10 blur-[120px] mix-blend-screen opacity-30" />
 
-      {/* 4. CSS noise texture overlay */}
-      <div className="absolute inset-0 opacity-[0.025] mix-blend-overlay pointer-events-none grain-bg" />
+      {/* 3.5. Subtle Light Streaks */}
+      <div className="absolute top-[20%] left-[-10%] w-[120%] h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent transform rotate-[-3deg] blur-[2px]" />
+      <div className="absolute top-[60%] left-[-10%] w-[120%] h-[1px] bg-gradient-to-r from-transparent via-violet-500/10 to-transparent transform rotate-[5deg] blur-[2px]" />
+      <div className="absolute top-[85%] left-[-10%] w-[120%] h-[1px] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent transform rotate-[-1deg] blur-[2px]" />
+
+      {/* 4. Subtle Noise Texture (Lightweight CSS SVG) */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+        }}
+      />
     </div>
   );
 }

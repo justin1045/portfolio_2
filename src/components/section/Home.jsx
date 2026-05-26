@@ -3,8 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import AnimatedText from "../AnimatedText";
 import MagneticButton from "../MagneticButton";
-import GradientMesh from "../GradientMesh";
 import HeroTerminal from "../HeroTerminal";
+import SectionShell from "../SectionShell";
 
 const ROLES = [
   "Responsive Websites",
@@ -106,19 +106,19 @@ function Home() {
   );
 
   return (
-    <section
+    <SectionShell
       id="home"
       ref={sectionRef}
-      className="min-h-[calc(100svh-4rem)] lg:min-h-screen flex items-center relative overflow-hidden bg-bg-primary"
+      variant="hero"
+      className="min-h-[calc(100svh-4rem)] lg:min-h-screen flex items-center relative overflow-hidden"
+      glowPosition="center"
     >
-      <GradientMesh />
-      <div className="dot-grid-bg" aria-hidden="true" />
 
-      <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 lg:pb-24 z-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+      <div className="w-full h-full pt-28 sm:pt-32 pb-16 lg:pb-24 flex items-center mt-8 lg:mt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
           
           {/* ── Left Column: Content ── */}
-          <div className="w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+          <div className="w-full">
             
             {/* Status badge */}
             <div className="hero-status mb-6 sm:mb-8" style={{ opacity: 0 }}>
@@ -138,13 +138,13 @@ function Home() {
               element="h1"
               animation="fadeUp"
               type="words"
-              className="text-[clamp(2.35rem,8vw,5.25rem)] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-6 lg:mb-8 max-w-[900px] [text-wrap:balance]"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.9] tracking-[-0.04em] font-bold text-white mb-6 lg:mb-8 max-w-[900px] [text-wrap:balance]"
             />
 
             {/* Subtitle */}
             <p
               ref={descRef}
-              className="hero-desc text-base sm:text-lg lg:text-xl text-slate-400 max-w-[36rem] leading-relaxed mb-8 sm:mb-10"
+              className="hero-desc text-base sm:text-lg lg:text-xl text-[var(--text-secondary)] max-w-[36rem] leading-relaxed mb-8 sm:mb-10"
               style={{ opacity: 0 }}
             >
               I create modern websites with React, Tailwind CSS, APIs, and deployment-ready code — focused on clean UI, speed, and usability.
@@ -175,14 +175,14 @@ function Home() {
               </MagneticButton>
             </div>
             
-            <p className="text-sm text-slate-500 mb-8 max-w-[36rem]">
+            <p className="text-sm text-[var(--text-muted)] mb-8 max-w-[36rem]">
               Open to freelance work, collaborations, and developer opportunities.
             </p>
 
             {/* Value Chips */}
             <div ref={chipsRef} className="flex flex-wrap gap-2 sm:gap-3 mb-10">
               {["Responsive UI", "Clean Code", "Deployment Ready"].map((chip) => (
-                <span key={chip} className="hero-chip text-xs font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] rounded-full px-3 py-1.5" style={{ opacity: 0 }}>
+                <span key={chip} className="hero-chip text-xs font-medium text-[var(--text-secondary)] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-full px-3 py-1.5" style={{ opacity: 0 }}>
                   {chip}
                 </span>
               ))}
@@ -194,7 +194,7 @@ function Home() {
                 href="https://github.com/justin1045"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-social-link text-slate-500 hover:text-white transition-colors"
+                className="hero-social-link text-[var(--text-muted)] hover:text-white transition-colors"
                 style={{ opacity: 0 }}
                 data-cursor="pointer"
                 aria-label="GitHub"
@@ -207,7 +207,7 @@ function Home() {
                 href="https://www.linkedin.com/in/chiragtank-developer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-social-link text-slate-500 hover:text-white transition-colors"
+                className="hero-social-link text-[var(--text-muted)] hover:text-white transition-colors"
                 style={{ opacity: 0 }}
                 data-cursor="pointer"
                 aria-label="LinkedIn"
@@ -220,12 +220,12 @@ function Home() {
           </div>
           
           {/* ── Right Column: Visual Element ── */}
-          <div className="mt-10 lg:mt-0 max-w-full sm:max-w-md mx-auto lg:max-w-none">
+          <div className="mt-10 lg:mt-0 w-full flex justify-center lg:justify-end">
             <HeroTerminal />
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 }
 
