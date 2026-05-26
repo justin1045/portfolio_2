@@ -26,10 +26,10 @@ export default function TrustBar() {
   }, { scope: barRef });
 
   const stats = [
-    { value: "4+", label: "Projects Delivered" },
-    { value: "100%", label: "Client Satisfaction" },
-    { value: "1+", label: "Year Experience" },
-    { value: "∞", label: "Commitment to Quality" },
+    { value: "4+", label: "Projects Built" },
+    { value: "100%", label: "Responsive First" },
+    { value: "Clean", label: "Code Focus" },
+    { value: "Ready", label: "For Deployment" },
   ];
 
   return (

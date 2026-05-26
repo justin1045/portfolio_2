@@ -4,40 +4,48 @@ import AnimatedText from "../AnimatedText";
 export default function Services() {
   const services = [
     {
-      title: "Custom Web Applications",
-      description:
-        "End-to-end development of scalable, high-performance web apps tailored to your business. From complex dashboards to SaaS platforms.",
+      title: "Responsive Website Development",
+      description: "Clean, mobile-first websites built with React, Tailwind CSS, and modern frontend practices.",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      tech: ["React", "Tailwind CSS", "JavaScript"],
+      color: "var(--accent-blue)",
+    },
+    {
+      title: "Web App UI & Functionality",
+      description: "Interactive interfaces, dashboards, forms, API integrations, and practical features built for real users.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       ),
-      tech: ["React", "Node.js", "MongoDB", "AWS"],
-      color: "var(--accent-blue)",
+      tech: ["React", "Node.js", "REST APIs"],
+      color: "var(--accent-purple)",
     },
     {
-      title: "Interactive UI/UX",
-      description:
-        "Transforming static interfaces into modern, animated, and accessible experiences. Micro-interactions that convert visitors to customers.",
+      title: "Portfolio / Landing Pages",
+      description: "Professional landing pages and digital presence websites for individuals, startups, and small businesses.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
         </svg>
       ),
-      tech: ["GSAP", "Tailwind", "Framer Motion"],
+      tech: ["HTML5", "CSS3", "GSAP"],
       color: "var(--accent-cyan)",
     },
     {
-      title: "E-Commerce Solutions",
-      description:
-        "Robust, secure, and fast online stores. Custom checkout flows, payment integration, and inventory management systems.",
+      title: "Frontend Improvement",
+      description: "UI cleanup, responsive fixes, performance improvements, and better user experience for existing websites.",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
       ),
-      tech: ["Next.js", "Stripe", "Shopify"],
-      color: "var(--accent-purple)",
+      tech: ["Responsive Design", "Bug Fixing", "UI/UX"],
+      color: "var(--accent-warm)",
     },
   ];
 
@@ -45,9 +53,9 @@ export default function Services() {
     <section id="services" className="py-16 md:py-32 relative z-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         {/* Section label */}
-        <div className="section-label">
-          <span className="label-number">01</span>
-          <span className="label-line" />
+        <div className="inline-flex items-center gap-3 font-mono text-sm font-medium text-accent-blue tracking-widest uppercase mb-5">
+          <span className="text-accent-warm font-bold">01</span>
+          <span className="w-10 h-px bg-accent-blue/40" />
           <span>Services</span>
         </div>
 
@@ -72,7 +80,7 @@ export default function Services() {
           <div className="space-y-5">
             {services.map((service, index) => (
               <RevealOnScroll key={index} delay={index * 0.1}>
-                <div className="glass-card p-5 sm:p-6 md:p-8 group hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row gap-4 sm:gap-6">
+                <div className="bg-white/[0.04] backdrop-blur-md border border-white/8 rounded-2xl hover:bg-white/[0.07] hover:border-accent-blue/30 hover:shadow-[0_8px_40px_rgba(59,130,246,0.08),0_0_0_1px_rgba(59,130,246,0.05)] p-5 sm:p-6 md:p-8 group hover:-translate-y-1 transition-all duration-400 flex flex-col sm:flex-row gap-4 sm:gap-6">
                   {/* Icon */}
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border transition-colors duration-300"
@@ -101,7 +109,7 @@ export default function Services() {
                     <p className="text-slate-400 text-sm mb-4 leading-relaxed">{service.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {service.tech.map((t) => (
-                        <span key={t} className="skill-tag text-xs">{t}</span>
+                        <span key={t} className="inline-block px-3 py-1 text-xs font-medium text-text-secondary bg-white/[0.04] border border-border-subtle rounded-lg transition-all duration-300 hover:text-white hover:bg-accent-blue/10 hover:border-accent-blue/25">{t}</span>
                       ))}
                     </div>
                   </div>

@@ -8,8 +8,9 @@ function MobileMenu({ menuOpen, setMenuOpen }) {
   const links = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "projects", label: "Case Studies" },
+    { id: "projects", label: "Projects" },
     { id: "approach", label: "Process" },
+    { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -70,6 +71,7 @@ function MobileMenu({ menuOpen, setMenuOpen }) {
 
   return (
     <div
+      id="mobile-menu"
       ref={menuRef}
       className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-all duration-400 ease-in-out ${
         menuOpen

@@ -67,9 +67,11 @@ function Navbar({ menuOpen, setMenuOpen }) {
   );
 
   const navLinks = [
+    { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "projects", label: "Case Studies" },
+    { id: "projects", label: "Projects" },
     { id: "approach", label: "Process" },
+    { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -86,8 +88,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
             className="font-bold text-2xl text-white tracking-tight flex items-center gap-2"
             data-cursor="pointer"
           >
-            CT<span className="text-blue-500">.</span>
-            <span className="text-sm font-normal text-gray-400 hidden sm:inline-block ml-2 border-l border-white/10 pl-4">Digital Studio</span>
+            Chirag<span className="text-blue-500">Tank</span>
           </a>
 
           {/* Hamburger */}
@@ -96,6 +97,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span
               className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
@@ -131,7 +133,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
               </a>
             ))}
             <a href="#contact" className="btn-primary px-5 py-2 text-sm ml-4 hidden lg:inline-flex" data-cursor="pointer">
-              <span>Start Project</span>
+              <span>Let's Talk</span>
             </a>
           </div>
         </div>

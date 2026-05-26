@@ -11,15 +11,23 @@ import Lenis from 'lenis'
 // Register GSAP plugins globally (once)
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Initialize Lenis smooth scroll
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: prefersReducedMotion ? 0 : 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
+  smoothWheel: !prefersReducedMotion,
   syncTouch: false,       // Keep native touch scrolling on iOS/Android
   touchMultiplier: 1,
   autoResize: true,       // Handle orientation changes on tablets
 })
+
+// Globally disable GSAP animations if reduced motion is preferred
+if (prefersReducedMotion) {
+  gsap.globalTimeline.timeScale(1000); // Instantly finish animations
+}
 
 // Connect Lenis to GSAP ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update)

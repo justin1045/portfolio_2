@@ -7,10 +7,11 @@ import GradientMesh from "../GradientMesh";
 import HeroTerminal from "../HeroTerminal";
 
 const ROLES = [
+  "Responsive Websites",
   "Web Applications",
-  "Interactive UIs",
-  "E-Commerce Platforms",
-  "Digital Experiences",
+  "Interactive Interfaces",
+  "Client Projects",
+  "Dashboard UI",
 ];
 
 function RoleRotator() {
@@ -79,6 +80,7 @@ function RoleRotator() {
 
 function Home() {
   const sectionRef = useRef(null);
+  const descRef = useRef(null);
 
   useGSAP(
     () => {
@@ -121,25 +123,20 @@ function Home() {
           <div className="w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0">
             {/* Status badge */}
             <div className="hero-status mb-5 sm:mb-8" style={{ opacity: 0 }}>
-              <span className="status-badge">
-                <span className="status-dot" />
-                <span className="hidden sm:inline">Accepting 2 new clients for Q3 2026</span>
-                <span className="sm:hidden">Open for Q3 2026 projects</span>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 text-[0.8rem] font-medium text-green-400 bg-green-400/10 border border-green-400/20 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)] animate-pulse-dot" />
+                <span className="hidden sm:inline">Open to new projects and collaborations</span>
+                <span className="sm:hidden">Open to new projects</span>
               </span>
         </div>
 
         {/* Name */}
         <AnimatedText
-          text="Chirag Tank"
+          text="Hi, I'm Chirag Tank — Full-Stack Developer building modern web experiences."
           element="h1"
           animation="fadeUp"
-          type="chars"
-          stagger={0.035}
-          duration={0.8}
-          delay={0.4}
-          scrollTrigger={false}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white mb-3 leading-[1.05] tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          type="words"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.1]"
         />
 
         {/* Role Rotator */}
@@ -147,12 +144,11 @@ function Home() {
 
         {/* Description */}
         <p
+          ref={descRef}
           className="hero-desc text-base md:text-lg text-slate-400 max-w-xl mb-6 sm:mb-10 leading-relaxed"
           style={{ opacity: 0 }}
         >
-          I partner with ambitious brands to engineer scalable web applications,
-          interactive interfaces, and robust digital solutions that drive real
-          business growth.
+          I build responsive, fast, and user-friendly websites using React, JavaScript, Tailwind CSS, APIs, and modern deployment tools. I focus on clean UI, practical functionality, and reliable delivery.
         </p>
 
         {/* CTAs */}
@@ -165,7 +161,7 @@ function Home() {
               data-cursor="pointer"
             >
               <span className="flex items-center gap-2">
-                Start a Project
+                Contact Me
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -175,7 +171,7 @@ function Home() {
 
           <MagneticButton strength={0.2}>
             <a
-              href="#projects"
+              href="#contact"
               className="hero-cta btn-outline w-full sm:w-auto"
               style={{ opacity: 0 }}
               data-cursor="pointer"

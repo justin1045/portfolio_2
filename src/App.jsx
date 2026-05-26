@@ -10,7 +10,7 @@ import TrustBar from "./components/section/TrustBar";
 import Services from "./components/section/Services";
 import Projects from "./components/section/Projects";
 import About from "./components/section/About";
-import Testimonials from "./components/section/Testimonials";
+import Credibility from "./components/section/Credibility";
 import Contact from "./components/section/Contact";
 import Footer from "./components/Footer";
 
@@ -19,7 +19,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
+    <div className="relative w-full overflow-x-hidden">
       <CustomCursor />
       <Loading onComplete={() => setIsLoaded(true)} />
 
@@ -58,8 +58,8 @@ function App() {
         {/* 5. COMFORT — Reduce anxiety about the process */}
         <About />
 
-        {/* 6. VALIDATION — Others trust you */}
-        <Testimonials />
+        {/* 6. CREDIBILITY — What You Can Expect */}
+        <Credibility />
 
         {/* 7. ACTION — Make it easy to say yes */}
         <Contact />
@@ -69,7 +69,7 @@ function App() {
 
       {/* Sticky CTA (mobile only) */}
       <StickyCTA />
-    </>
+    </div>
   );
 }
 
