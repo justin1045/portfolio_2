@@ -100,7 +100,7 @@ function ProjectCard({ project, index }) {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-6 border-t border-white/[0.04]">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/[0.04]">
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
                 <span key={tech} className="skill-tag text-xs">{tech}</span>
@@ -133,10 +133,12 @@ function Projects() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const progressRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 1024 : false
+  );
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => setIsMobile(window.innerWidth < 1024);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -170,9 +172,19 @@ function Projects() {
   const mobileRef = useRef(null);
   useGSAP(() => {
     if (!isMobile || !mobileRef.current) return;
-    gsap.from(mobileRef.current.querySelectorAll(".mobile-card"), {
-      y: 50, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
-      scrollTrigger: { trigger: mobileRef.current, start: "top 80%", toggleActions: "play none none none" },
+    const cards = mobileRef.current.querySelectorAll(".mobile-card");
+    cards.forEach((card) => {
+      gsap.from(card, {
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: { 
+          trigger: card, 
+          start: "top 88%", 
+          toggleActions: "play none none none" 
+        },
+      });
     });
   }, { scope: mobileRef, dependencies: [isMobile] });
 
@@ -204,18 +216,18 @@ function Projects() {
           </div>
         </div>
       ) : (
-        <div className="py-24 px-6" ref={mobileRef}>
+        <div className="py-24 px-5 sm:px-6 md:px-8" ref={mobileRef}>
           <div className="section-label">
             <span className="label-number">02</span>
             <span className="label-line" />
             <span>Work</span>
           </div>
           <AnimatedText text="Selected Case Studies" element="h2" animation="fadeUp" type="words" className="text-3xl font-bold text-white mb-10" />
-          <div className="space-y-6 max-w-lg mx-auto">
+          <div className="space-y-6 max-w-lg md:max-w-2xl mx-auto">
             {projects.map((p, i) => (
               <div key={p.id} className="mobile-card rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
                 <div className="h-[2px]" style={{ background: `linear-gradient(90deg, ${p.color}, transparent)` }} />
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-4xl font-bold font-mono" style={{ color: p.color, opacity: 0.1 }}>
                       {String(i + 1).padStart(2, "0")}

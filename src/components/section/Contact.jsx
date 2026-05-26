@@ -32,14 +32,14 @@ function Contact() {
 
   return (
     <section id="contact" ref={sectionRef} className="py-16 md:py-32 relative z-10">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         <div className="section-label">
           <span className="label-number">05</span>
           <span className="label-line" />
           <span>Contact</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
           {/* Left: Copy */}
           <div>
             <AnimatedText
@@ -56,11 +56,11 @@ function Contact() {
               </p>
 
               {/* Scarcity signal */}
-              <div className="inline-flex items-center gap-2 bg-amber-500/[0.06] border border-amber-500/15 rounded-lg px-4 py-2.5 mb-8 md:mb-12">
-                <svg className="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-start md:items-center gap-3 bg-amber-500/[0.06] border border-amber-500/15 rounded-lg px-4 py-3 mb-8 md:mb-12 max-w-full">
+                <svg className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5 md:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-sm text-amber-300/80">Currently taking on <strong className="text-amber-300">2 new projects</strong>. Spots fill up quickly.</span>
+                <span className="text-sm text-amber-300/80 flex-1 leading-relaxed">Currently taking on <strong className="text-amber-300">2 new projects</strong>. Spots fill up quickly.</span>
               </div>
 
               <div className="space-y-6">
@@ -105,7 +105,7 @@ function Contact() {
 
           {/* Right: Form */}
           <RevealOnScroll delay={0.15}>
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 md:p-10">
+            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-8 md:p-10">
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="floating-input-group">
                   <input type="text" name="name" id="contact-name" value={form.name} required placeholder=" " className="floating-input" onChange={(e) => setForm({ ...form, name: e.target.value })} />

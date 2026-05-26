@@ -10,9 +10,15 @@ function RevealOnScroll({ children, stagger = false, delay = 0 }) {
   const prefersReducedMotion = typeof window !== 'undefined' 
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false
+  );
+
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   useGSAP(() => {
@@ -21,7 +27,7 @@ function RevealOnScroll({ children, stagger = false, delay = 0 }) {
       return;
     }
 
-    const triggerStart = isMobile ? 'top 92%' : 'top 85%';
+    const triggerStart = isMobile ? 'top 88%' : 'top 85%';
     const yDistance = isMobile ? 20 : 30;
 
     if (stagger) {

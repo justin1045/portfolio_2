@@ -43,7 +43,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 md:py-32 relative z-10">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         {/* Section label */}
         <div className="section-label">
           <span className="label-number">01</span>
@@ -72,7 +72,7 @@ export default function Services() {
           <div className="space-y-5">
             {services.map((service, index) => (
               <RevealOnScroll key={index} delay={index * 0.1}>
-                <div className="glass-card p-6 md:p-8 group hover:-translate-y-1 transition-all duration-300 flex gap-6">
+                <div className="glass-card p-5 sm:p-6 md:p-8 group hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row gap-4 sm:gap-6">
                   {/* Icon */}
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border transition-colors duration-300"

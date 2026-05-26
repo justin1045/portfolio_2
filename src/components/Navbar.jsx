@@ -78,7 +78,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
       ref={navRef}
       className="fixed top-0 w-full z-40 bg-[rgba(5,5,5,0.7)] backdrop-blur-xl border-b border-white/5 shadow-lg"
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <a
@@ -92,7 +92,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
 
           {/* Hamburger */}
           <button
-            className="w-8 h-8 flex flex-col items-center justify-center gap-1.5 cursor-pointer z-40 md:hidden"
+            className="w-11 h-11 flex flex-col items-center justify-center gap-1.5 cursor-pointer z-40 md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}

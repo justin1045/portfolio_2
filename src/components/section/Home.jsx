@@ -115,7 +115,7 @@ function Home() {
       {/* Dot grid overlay */}
       <div className="dot-grid-bg" aria-hidden="true" />
 
-      <div className="w-full max-w-6xl mx-auto px-6 md:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16 z-10 relative">
+      <div className="w-full max-w-6xl mx-auto px-5 sm:px-6 md:px-8 pt-28 sm:pt-32 pb-12 sm:pb-16 z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
           {/* ── Left Column: Content ── */}
           <div className="w-full max-w-2xl lg:max-w-none mx-auto lg:mx-0">
@@ -123,8 +123,9 @@ function Home() {
             <div className="hero-status mb-5 sm:mb-8" style={{ opacity: 0 }}>
               <span className="status-badge">
                 <span className="status-dot" />
-                Accepting 2 new clients for Q3 2026
-          </span>
+                <span className="hidden sm:inline">Accepting 2 new clients for Q3 2026</span>
+                <span className="sm:hidden">Open for Q3 2026 projects</span>
+              </span>
         </div>
 
         {/* Name */}
@@ -155,11 +156,11 @@ function Home() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-6 sm:mb-10">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4 mb-6 sm:mb-10">
           <MagneticButton strength={0.2}>
             <a
               href="#contact"
-              className="hero-cta btn-primary shadow-[0_4px_20px_rgba(59,130,246,0.25)]"
+              className="hero-cta btn-primary w-full sm:w-auto shadow-[0_4px_20px_rgba(59,130,246,0.25)]"
               style={{ opacity: 0 }}
               data-cursor="pointer"
             >
@@ -175,7 +176,7 @@ function Home() {
           <MagneticButton strength={0.2}>
             <a
               href="#projects"
-              className="hero-cta btn-outline"
+              className="hero-cta btn-outline w-full sm:w-auto"
               style={{ opacity: 0 }}
               data-cursor="pointer"
             >

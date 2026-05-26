@@ -1,4 +1,4 @@
-import { useRef, createElement } from "react";
+import { useRef, createElement, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,6 +26,17 @@ export default function AnimatedText({
   const containerRef = useRef(null);
   const textRef = useRef(null);
 
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false
+  );
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   useGSAP(
     () => {
       if (!textRef.current) return;
@@ -44,12 +55,14 @@ export default function AnimatedText({
       const targets =
         type === "chars" ? split.chars : type === "words" ? split.words : split.lines;
 
+      const triggerStart = isMobile ? 'top 90%' : 'top 85%';
+
       // Base ScrollTrigger config
       const scrollConfig = scrollTrigger
         ? {
             scrollTrigger: {
               trigger: containerRef.current,
-              start: "top 85%",
+              start: triggerStart,
               toggleActions: "play none none none",
             },
           }
@@ -152,7 +165,7 @@ export default function AnimatedText({
         split.revert();
       };
     },
-    { scope: containerRef, dependencies: [text, animation, type] }
+    { scope: containerRef, dependencies: [text, animation, type, isMobile] }
   );
 
   return (

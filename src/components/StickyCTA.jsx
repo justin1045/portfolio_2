@@ -51,7 +51,7 @@ export default function StickyCTA() {
         isVisible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="bg-[rgba(5,5,5,0.9)] backdrop-blur-xl border-t border-white/[0.06] px-4 py-3">
+      <div className="bg-[rgba(5,5,5,0.9)] backdrop-blur-xl border-t border-white/[0.06] px-4 py-3" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}>
         <a
           href="#contact"
           className="btn-primary w-full py-3 text-sm font-semibold rounded-lg"

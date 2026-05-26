@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import AnimatedText from "../AnimatedText";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimonials() {
   const scrollRef = useRef(null);
@@ -47,12 +50,18 @@ export default function Testimonials() {
       ease: "none",
       duration: 30,
       repeat: -1,
+      scrollTrigger: {
+        trigger: scrollRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        toggleActions: "play pause resume pause",
+      },
     });
   }, { scope: scrollRef });
 
   return (
     <section id="testimonials" className="py-16 md:py-32 relative z-10 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 mb-10 md:mb-14">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8 mb-10 md:mb-14">
         <div className="section-label">
           <span className="label-number">04</span>
           <span className="label-line" />
@@ -74,8 +83,8 @@ export default function Testimonials() {
 
         <div className="flex w-max" ref={scrollRef}>
           {testimonials.map((t, i) => (
-            <div key={i} className="w-[320px] md:w-[400px] flex-shrink-0 mx-3">
-              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 h-full min-h-[280px] flex flex-col">
+            <div key={i} className="w-[280px] sm:w-[320px] md:w-[400px] flex-shrink-0 mx-2 sm:mx-3">
+              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-8 h-full min-h-[260px] sm:min-h-[280px] flex flex-col">
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: t.stars }).map((_, si) => (

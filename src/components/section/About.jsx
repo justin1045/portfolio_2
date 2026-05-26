@@ -36,7 +36,7 @@ function About() {
 
   return (
     <section id="approach" className="py-16 md:py-32 relative z-10">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         {/* Section label */}
         <div className="section-label">
           <span className="label-number">03</span>
@@ -67,12 +67,12 @@ function About() {
         {/* Vertical Timeline */}
         <div className="relative mb-12 md:mb-20">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/30 via-cyan-500/20 to-transparent" />
+          <div className="absolute left-[1.1rem] md:left-[1.6rem] top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/30 via-cyan-500/20 to-transparent" />
 
           <div className="space-y-6 md:space-y-10">
             {processSteps.map((step, index) => (
               <RevealOnScroll key={index} delay={index * 0.08}>
-                <div className="relative flex gap-6 md:gap-10 items-start pl-2 md:pl-4">
+                <div className="relative flex gap-5 md:gap-8 items-start pl-0 md:pl-0">
                   {/* Timeline dot */}
                   <div className="relative z-10 flex-shrink-0 mt-1">
                     <div className="w-5 h-5 md:w-7 md:h-7 rounded-full border-2 border-blue-500/40 bg-[var(--bg-primary)] flex items-center justify-center">

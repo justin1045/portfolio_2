@@ -37,7 +37,7 @@ export default function TrustBar() {
       ref={barRef}
       className="relative z-10 border-y border-white/[0.04] bg-white/[0.015]"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-8 py-8 md:py-10">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8 py-8 md:py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <div key={i} className="trust-item text-center md:text-left">

@@ -73,7 +73,6 @@ export default function MagneticButton({
     {
       ref: containerRef,
       className,
-      style: { display: "inline-block" },
       onMouseMove: isTouchDevice ? undefined : handleMouseMove,
       onMouseLeave: isTouchDevice ? undefined : handleMouseLeave,
     },

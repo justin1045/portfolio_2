@@ -7,7 +7,7 @@ function Footer() {
       {/* Gradient divider */}
       <div className="gradient-divider mb-8" />
 
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-8">
         <RevealOnScroll>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
